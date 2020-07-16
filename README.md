@@ -26,9 +26,10 @@ npm install --save react react-dom react-redux react-router react-router-dom red
 
 ### Basic Files
 
-- Electron Entry File: index.js
-- HTML File: dist/index.html
-- React Entry File: src/index.js
+- Electron: index.js
+- HTML: dist/index.html
+- React: src/index.js
+- Redux: src/actions/index.js, src/reducers/index.js
 
 ### Notes:
 
