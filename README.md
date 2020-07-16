@@ -27,7 +27,7 @@ npm install --save react react-dom react-redux react-router react-router-dom red
 5.  Install App sepecific libs
 
 ```
-npm install --save react-dropzone fluent-ffmpeg
+npm install --save react-dropzone fluent-ffmpeg moment
 ```
 
 Install ffmpeg:

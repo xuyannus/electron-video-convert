@@ -25,6 +25,7 @@
   "dependencies": {
     "fluent-ffmpeg": "^2.1.2",
     "lodash": "^4.17.19",
+    "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.2",
