@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   mode: "development",
   entry: "./src/index.js",
-  target: "electron-renderer",
+  target: "electron-renderer", // https://webpack.js.org/configuration/target/#string
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
