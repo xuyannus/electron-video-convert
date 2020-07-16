@@ -1,4 +1,6 @@
 const electron = require("electron");
+const ffmpeg = require("fluent-ffmpeg");
+const _ = require("lodash");
 const { app, BrowserWindow, ipcMain } = electron;
 
 let mainWin = undefined;
@@ -18,7 +20,7 @@ app.on("ready", () => {
   mainWin.loadFile("./dist/index.html");
 });
 
-ipcMain.on("videos:added", (event, values) => {
+ipcMain.on("videos:added", (event, videos) => {
   const promises = _.map(videos, (video) => {
     return new Promise((resolve, reject) => {
       ffmpeg.ffprobe(video.path, (err, metadata) => {
@@ -30,7 +32,6 @@ ipcMain.on("videos:added", (event, values) => {
   });
 
   Promise.all(promises).then((results) => {
-    console.log(results);
     mainWin.webContents.send("videos:metadata-complete", results);
   });
 });
