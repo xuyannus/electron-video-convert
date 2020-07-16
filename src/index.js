@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { HashRouter as Router, Route, useLocation } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 
@@ -15,8 +15,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div className="app">
-        <Route path="/convert" exact component={ConvertScreen} />
-        <Route path="/" exact component={VideoSelectScreen} />
+        <Route exact path="/convert" component={ConvertScreen} />
+        <Route exact path="/" component={VideoSelectScreen} />
       </div>
     </Router>
   </Provider>,

@@ -1,10 +1,21 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 import { connect } from "react-redux";
+import { addVideos } from "../actions";
+import _ from "lodash";
 
 class VideoSelectScreen extends React.Component {
   onDrop = (acceptedFiles) => {
-    console.log(acceptedFiles);
+    const videos = _.map(acceptedFiles, ({ name, path, size, type }) => {
+      return { name, path, size, type };
+    });
+
+    if (videos.length > 0) {
+      this.props.addVideos(videos);
+      if (!this.props.small) {
+        this.props.history.push("./convert");
+      }
+    }
   };
 
   render() {
@@ -21,15 +32,15 @@ class VideoSelectScreen extends React.Component {
           activeClassName="dropzone-active"
           rejectClassName="dropzone-reject"
         >
-          {({ getRootProps, getInputProps }) => {
+          {({ getRootProps, getInputProps, isDragActive, isDragReject }) => {
             return (
               <div {...getRootProps()} className="dropzone">
                 <input {...getInputProps()} />
-                <p className="drop-message">
+                <h4 className="drop-message">
                   {!isDragActive && "Click here or drop a file to upload!"}
                   {isDragActive && !isDragReject && "Drop it here!"}
                   {isDragReject && "File type not accepted, sorry!"}
-                </p>
+                </h4>
               </div>
             );
           }}
@@ -39,4 +50,4 @@ class VideoSelectScreen extends React.Component {
   }
 }
 
-export default VideoSelectScreen;
+export default connect(null, { addVideos: addVideos })(VideoSelectScreen);

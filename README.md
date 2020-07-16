@@ -27,7 +27,19 @@ npm install --save react react-dom react-redux react-router react-router-dom red
 5.  Install App sepecific libs
 
 ```
-npm install --save react-dropzone
+npm install --save react-dropzone fluent-ffmpeg
+```
+
+Install ffmpeg:
+
+```
+https://ffmpeg.org/download.html
+```
+
+How to use ffmeg:
+
+```
+https://www.ostechnix.com/20-ffmpeg-commands-beginners/
 ```
 
 6. Config package.json and webpack.config.js (as shown in code)
@@ -46,7 +58,7 @@ npm run server
 npm run start
 ```
 
-or 
+or
 
 ```
 npm start
