@@ -15,13 +15,41 @@ npm install --save-dev electron
 3.  Install Webpack and Babel libs as development dependency:
 
 ```
-npm install --save-dev webpack webpack-cli webpack-dev-server @babel/core babel-loader @babel/preset-env @babel/preset-react
+npm install --save-dev webpack webpack-cli webpack-dev-server @babel/core babel-loader @babel/preset-env @babel/preset-react @babel/plugin-proposal-class-properties
 ```
 
 4.  Install general react-redux-electron libs as dependency:
 
 ```
 npm install --save react react-dom react-redux react-router react-router-dom redux redux-thunk lodash
+```
+
+5.  Install App sepecific libs
+
+```
+npm install --save react-dropzone
+```
+
+6. Config package.json and webpack.config.js (as shown in code)
+
+### Run Project in Development Mode
+
+1. Run Webpack Dev Server:
+
+```
+npm run server
+```
+
+2. Run Electron:
+
+```
+npm run start
+```
+
+or 
+
+```
+npm start
 ```
 
 ### Basic Files

@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from "redux";
 
 import reducers from "./reducers";
 import VideoSelectScreen from "./screens/VideoSelectScreen";
-import ConvertScreen from "./screens/ConvertScreen";
+// import ConvertScreen from "./screens/ConvertScreen";
 
 const store = createStore(reducers, {}, applyMiddleware(thunk));
 
@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div className="app">
-        <Route path="/convert" exact component={ConvertScreen} />
+        {/* <Route path="/convert" exact component={ConvertScreen} /> */}
         <Route path="/" exact component={VideoSelectScreen} />
       </div>
     </Router>
