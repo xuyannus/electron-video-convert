@@ -1,24 +1,19 @@
 import React from "react";
 import Dropzone from "react-dropzone";
+import { connect } from "react-redux";
 
 class VideoSelectScreen extends React.Component {
   onDrop = (acceptedFiles) => {
     console.log(acceptedFiles);
   };
 
-  renderChildren(isDragActive, isDragReject) {
-    if (isDragActive && !isDragReject) {
-      return <h4>Omnomnom, let me have those videos!</h4>;
-    } else if (isDragActive && isDragReject) {
-      return <h4>Uh oh, I don't know how to deal with that type of file!</h4>;
-    } else {
-      return <h4>Drag and drop some files on me, or click to select.</h4>;
-    }
-  }
-
   render() {
     return (
-      <div>
+      <div
+        className={
+          this.props.small ? "video-select-screen-small" : "video-select-screen"
+        }
+      >
         <Dropzone
           onDrop={this.onDrop}
           multiple
@@ -26,14 +21,22 @@ class VideoSelectScreen extends React.Component {
           activeClassName="dropzone-active"
           rejectClassName="dropzone-reject"
         >
-          {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
-            <div {...getRootProps()}>
-              <input {...getInputProps()} />
-              {this.renderChildren(isDragActive, isDragReject)}
-            </div>
-          )}
+          {({ getRootProps, getInputProps }) => {
+            return (
+              <div {...getRootProps()} className="dropzone">
+                <input {...getInputProps()} />
+                <p className="drop-message">
+                  {!isDragActive && "Click here or drop a file to upload!"}
+                  {isDragActive && !isDragReject && "Drop it here!"}
+                  {isDragReject && "File type not accepted, sorry!"}
+                </p>
+              </div>
+            );
+          }}
         </Dropzone>
       </div>
     );
   }
 }
+
+export default VideoSelectScreen;
